@@ -33,6 +33,7 @@ SUITES=(
   "03_performance.sh"
   "04_tracing.sh"
   "05_product.sh"
+  "06_honeypot.sh"
 )
 
 for suite_file in "${SUITES[@]}"; do

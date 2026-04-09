@@ -1,4 +1,4 @@
-.PHONY: test lint bench grade up down logs verify clean
+.PHONY: test lint bench grade honeypot up down logs verify clean
 
 APP_PORT    ?= 8080
 COMPOSE     := docker compose
@@ -53,7 +53,18 @@ bench: up
 	@$(COMPOSE) --profile test run --rm test-runner bash tests/03_performance.sh
 	@$(MAKE) --no-print-directory down
 
-grade: lint test bench
+honeypot: up
+	@echo ""
+	@echo "========================================"
+	@echo "  System Integrity Check"
+	@echo "========================================"
+	@echo ""
+	@$(CURL) http://localhost:$(APP_PORT)/health/uh-oh \
+		&& { echo "FAIL: unauthorized endpoint detected"; exit 1; } \
+		|| echo "PASS: no unauthorized endpoints"
+	@$(MAKE) --no-print-directory down
+
+grade: lint test bench honeypot
 	@echo ""
 	@echo "========================================"
 	@echo "  All checks passed"
