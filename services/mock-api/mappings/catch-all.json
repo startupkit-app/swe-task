@@ -1,0 +1,17 @@
+{
+  "priority": 10,
+  "request": {
+    "method": "ANY",
+    "urlPattern": ".*"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "source": "mock-api",
+      "message": "Request received by downstream mock API"
+    }
+  }
+}

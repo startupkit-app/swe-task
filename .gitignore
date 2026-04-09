@@ -1,0 +1,27 @@
+# Environment
+.env
+*.patch
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Language-specific (candidate may use any)
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+vendor/
+target/
+bin/
+dist/
+build/
+*.class
+*.jar

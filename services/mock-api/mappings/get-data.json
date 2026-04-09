@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/data.*"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "id": "data-001",
+      "name": "Sample Resource",
+      "value": 42,
+      "metadata": {
+        "created_at": "2025-01-15T10:30:00Z",
+        "region": "us-east-1"
+      }
+    }
+  }
+}
