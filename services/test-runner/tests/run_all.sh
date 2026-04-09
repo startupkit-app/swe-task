@@ -3,7 +3,9 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# shellcheck source=lib/assertions.sh
 source "${DIR}/lib/assertions.sh"
+# shellcheck source=lib/wait.sh
 source "${DIR}/lib/wait.sh"
 
 APP_URL="${APP_URL:-http://candidate-app:8080}"
@@ -36,6 +38,7 @@ SUITES=(
 for suite_file in "${SUITES[@]}"; do
   suite_path="${DIR}/${suite_file}"
   if [ -f "$suite_path" ]; then
+    # shellcheck source=/dev/null
     source "$suite_path"
   fi
 done

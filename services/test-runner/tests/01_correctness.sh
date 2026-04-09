@@ -37,8 +37,8 @@ assert_json_field_exists "Proxied response contains downstream data" "$PROXY_BOD
 flush_redis
 
 # Send requests up to the limit (parallel batches for speed)
-for batch in $(seq 1 5); do
-  for i in $(seq 1 20); do
+for _batch in $(seq 1 5); do
+  for _i in $(seq 1 20); do
     curl -sf -o /dev/null \
       -H "X-API-Key: ${API_KEY}" \
       -H "X-Forwarded-For: 10.0.0.1" \
@@ -60,7 +60,7 @@ assert_status "Request #101 is rate limited (429)" 429 "$LAST_STATUS" \
 flush_redis
 
 # Client A sends 50 requests
-for i in $(seq 1 50); do
+for _i in $(seq 1 50); do
   curl -sf -o /dev/null -H "X-API-Key: ${API_KEY}" -H "X-Forwarded-For: 10.0.0.10" "${APP_URL}/api/data" 2>/dev/null
 done
 

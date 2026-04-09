@@ -9,7 +9,7 @@ flush_redis
 # ---- Warm up the request log with many entries ----
 # Send 500 requests from various IPs to build up the log
 echo "  Generating load (500 requests from 50 IPs)..."
-for batch in $(seq 1 10); do
+for _batch in $(seq 1 10); do
   for ip_suffix in $(seq 1 50); do
     curl -sf -o /dev/null \
       -H "X-API-Key: ${API_KEY}" \

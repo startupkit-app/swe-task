@@ -5,7 +5,8 @@
 PASS_COUNT=0
 FAIL_COUNT=0
 TEST_COUNT=0
-CURRENT_SUITE=""
+CURRENT_SUITE="" # exported for suite identification
+export CURRENT_SUITE
 
 suite() {
   CURRENT_SUITE="$1"
